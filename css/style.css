@@ -28,7 +28,7 @@ body {
 #listaNav a {
     color: white;
     text-decoration: none;
-    display: inline-block;
+    display: inline-flex;
     transition: transform 0.2s ease, color 0.2s ease;
 }
 
@@ -39,11 +39,15 @@ body {
 
 #paragrafo-storia {
     width: 100%;
+    background-color: white;
+    padding: 40px;
+    border-radius: 11px;
 }
+
 
 .contenitore-foto {
     position: relative;
-    display: inline-block;
+    display: inline-flex;
     margin-left: 30px; 
 }
 
@@ -69,4 +73,29 @@ body {
     max-width: 300px;
     height: auto;
     display: block;
+}
+
+.bg-brown{
+    background-color: #524646;
+}
+
+.bg-beige{
+    background-color: #A8A492;
+}
+
+.text-nowrap{
+    white-space: nowrap;
+}
+
+footer ul li a{
+    display: inline-flex !important;
+    align-items: center;
+    gap: 5px;
+    color: white;
+    transition: transform 0.2s ease, color 0.2s ease;
+}
+
+footer ul li a:hover{
+    transform: translateY(-5px) scale(1.2);
+    color: #A8A492;
 }
