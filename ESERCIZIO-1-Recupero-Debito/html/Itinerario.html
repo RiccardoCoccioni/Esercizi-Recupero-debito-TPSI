@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guida turistica di Torino | Itinerario</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <link rel="stylesheet" href="../css/itinerario.css">
+</head>
+
+<body>
+    <header>
+        <nav class="navbar sticky-top" id="navbar">
+            <div class="container">
+                <h1 id="titolo-home">🐂TORINO</h1>
+
+                <div class="collegamentiNav">
+                    <ul class="list-unstyled" id="listaNav">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="CosaVedere.html">Cosa Vedere</a></li>
+                        <li><a href="Itinerario.html">Itinerario</a></li>
+                        <li><a href="Informazioni.html">Informazioni</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <div class="bg-beige">
+        <div class="container">
+            <div class="d-flex flex-column align-items-center justify-content-center mb-4 mb-5" id="titolo">
+                <h2 class="fw-bold">Itinerario di 2 giorni a Torino</h2>
+                <p>Un percorso pensato per scoprire il centro storico e le grandi residenze sabaude appena fuori
+                    città, tappa dopo tappa</p>
+            </div>
+
+            <div class="row">
+                <div class="col-12 d-flex justify-content-center">
+                    <ul class="nav nav-pills mb-4" id="tabGiorni" role="tablist">
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link active" id="giorno1-tab" data-bs-toggle="pill"
+                                data-bs-target="#giorno1" type="button" role="tab" aria-controls="giorno1"
+                                aria-selected="true">Giorno 1 - Centro storico</button>
+                        </li>
+                        <li class="nav-item" role="presentation">
+                            <button class="nav-link" id="giorno2-tab" data-bs-toggle="pill" data-bs-target="#giorno2"
+                                type="button" role="tab" aria-controls="giorno2" aria-selected="false">Giorno 2 -
+                                Residenze sabaude</button>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="tab-content" id="contenutoGiorni">
+                <div class="tab-pane fade show active" id="giorno1" role="tabpanel" aria-label="Giorno 1 - Centro storico">
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="tabella-giorno mb-4">
+                                <h3 class="fw-bold mb-3">Un giorno nel cuore di Torino</h3>
+                                <p class="mb-4">Tra piazze sabaude, il museo egizio più antico del mondo e la Mole
+                                    che svetta sulla città. Il percorso si conclude con una serata al cinema, in
+                                    perfetto stile torinese.</p>
+                                <div class="table-responsive">
+                                    <table class="table table-hover align-middle tabella-itinerario">
+                                        <thead>
+                                            <tr>
+                                                <th class="text-black">Orario</th>
+                                                <th class="text-black">Tappa</th>
+                                                <th class="text-black">Durata indicativa</th>
+                                                <th class="text-black">Attività</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>9:00 - 9:45</td>
+                                                <td>Piazza Castello</td>
+                                                <td>45 min</td>
+                                                <td>Passeggiata iniziale, vista su Palazzo Madama e Palazzo Reale
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>10:00 - 12:00</td>
+                                                <td>Museo Egizio</td>
+                                                <td>2 h</td>
+                                                <td>Visita alla collezione, con la Tomba di Kha</td>
+                                            </tr>
+                                            <tr>
+                                                <td>12:15 - 13:30</td>
+                                                <td>Pausa pranzo</td>
+                                                <td>1 h 15 min</td>
+                                                <td>Pranzo in zona centro, tra i portici</td>
+                                            </tr>
+                                            <tr>
+                                                <td>14:00 - 16:00</td>
+                                                <td>Mole Antonelliana</td>
+                                                <td>2 h</td>
+                                                <td>Museo Nazionale del Cinema e ascensore panoramico a 85 metri</td>
+                                            </tr>
+                                            <tr>
+                                                <td>16:30 - 18:00</td>
+                                                <td>Passeggiata libera</td>
+                                                <td>1 h 30 min</td>
+                                                <td>Tempo libero sotto i portici del centro, aperitivo</td>
+                                            </tr>
+                                            <tr>
+                                                <td>19:30 - 21:30</td>
+                                                <td>Cinema Lux</td>
+                                                <td>2 h</td>
+                                                <td>Serata al cinema in una delle sale storiche di Torino</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tab-pane fade" id="giorno2" role="tabpanel" aria-label="Giorno 2 - Residenze sabaude">
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="tabella-giorno mb-4">
+                                <h3 class="fw-bold mb-3">Superga, motori e la Reggia dei Savoia</h3>
+                                <p class="mb-4">Una giornata più lunga, fuori dal centro: si parte in salita verso
+                                    la collina di Superga, per poi tornare in città verso il Museo dell'Automobile e
+                                    chiudere in bellezza alla Reggia di Venaria.</p>
+                                <div class="table-responsive">
+                                    <table class="table table-hover align-middle tabella-itinerario">
+                                        <thead>
+                                            <tr>
+                                                <th scope="col">Orario</th>
+                                                <th scope="col">Tappa</th>
+                                                <th scope="col">Durata indicativa</th>
+                                                <th scope="col">Attività</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>9:00 - 9:20</td>
+                                                <td>Stazione Sassi</td>
+                                                <td>20 min</td>
+                                                <td>Salita con la storica tranvia a dentiera Sassi-Superga</td>
+                                            </tr>
+                                            <tr>
+                                                <td>9:30 - 11:30</td>
+                                                <td>Basilica di Superga</td>
+                                                <td>2 h</td>
+                                                <td>Visita alla Basilica, alle Tombe Reali dei Savoia e salita alla
+                                                    Cupola panoramica</td>
+                                            </tr>
+                                            <tr>
+                                                <td>11:45 - 12:15</td>
+                                                <td>Discesa a Sassi</td>
+                                                <td>30 min</td>
+                                                <td>Rientro in centro con la tranvia a dentiera</td>
+                                            </tr>
+                                            <tr>
+                                                <td>13:00 - 14:00</td>
+                                                <td>Pausa pranzo</td>
+                                                <td>1 h</td>
+                                                <td>Pranzo in zona Lingotto, prima della visita al museo</td>
+                                            </tr>
+                                            <tr>
+                                                <td>14:15 - 16:00</td>
+                                                <td>Museo dell'Automobile (MAUTO)</td>
+                                                <td>1 h 45 min</td>
+                                                <td>Percorso tra le oltre 200 vetture storiche esposte</td>
+                                            </tr>
+                                            <tr>
+                                                <td>16:45 - 19:00</td>
+                                                <td>Reggia di Venaria</td>
+                                                <td>2 h 15 min</td>
+                                                <td>Visita alla Reggia, alle sale barocche e ai Giardini Reali</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="informazioni-pratiche mt-5 mb-5">
+                <h3 class="text-white">Orari e biglietti delle tappe del Giorno 2</h3>
+
+                <div class="accordion" id="accordionItinerario">
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#collapseSuperga">
+                                Basilica di Superga
+                            </button>
+                        </h2>
+                        <div id="collapseSuperga" class="accordion-collapse collapse"
+                            data-bs-parent="#accordionItinerario">
+                            <div class="accordion-body">
+                                <p><strong>Orari Basilica:</strong> lun-ven 10:00-13:30 / 14:30-18:00, sab dom e
+                                    festivi 10:00-19:00</p>
+                                <p><strong>Ingresso Basilica:</strong> gratuito</p>
+                                <p><strong>Tombe Reali e Cupola:</strong> a pagamento, biglietti separati (a partire
+                                    da circa 4€)</p>
+                                <p><strong>Come arrivare:</strong> tram 15 fino a Sassi, poi tranvia a dentiera
+                                    Sassi-Superga, partenze ogni ora dalle 10:00 alle 18:00</p>
+                                <p><strong>Attenzione:</strong> la tranvia non è attiva il mercoledì, in quel giorno
+                                    c'è la linea sostitutiva 79</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#collapseMauto">
+                                Museo dell'Automobile
+                            </button>
+                        </h2>
+                        <div id="collapseMauto" class="accordion-collapse collapse"
+                            data-bs-parent="#accordionItinerario">
+                            <div class="accordion-body">
+                                <p><strong>Orari:</strong> lunedì 10:00-14:00, da martedì a domenica 10:00-19:00, la
+                                    biglietteria chiude un'ora prima</p>
+                                <p><strong>Biglietto:</strong> 18€ intero, 15€ ridotto over 65 e 18-25 anni, 8€
+                                    ragazzi 6-17 anni</p>
+                                <p><strong>Come arrivare:</strong> Corso Unità d'Italia 40, zona Lingotto</p>
+                                <p><strong>Consiglio:</strong> il percorso su tre piani richiede almeno un'ora e
+                                    mezza</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#collapseVenaria">
+                                Reggia di Venaria
+                            </button>
+                        </h2>
+                        <div id="collapseVenaria" class="accordion-collapse collapse"
+                            data-bs-parent="#accordionItinerario">
+                            <div class="accordion-body">
+                                <p><strong>Orari:</strong> chiusa il lunedì, da martedì a venerdì 9:30-17:00, sabato
+                                    domenica e festivi 9:30-18:30, ultimo ingresso due ore prima della chiusura</p>
+                                <p><strong>Biglietto:</strong> il biglietto comprende Reggia, mostre in corso e
+                                    Giardini Reali, meglio prenderlo online in anticipo</p>
+                                <p><strong>Come arrivare:</strong> circa 10 km da Torino, raggiungibile con la
+                                    navetta Venaria Express da Piazza Castello</p>
+                                <p><strong>Consiglio:</strong> mettere in conto almeno 2 ore per Reggia e Giardini
+                                    insieme</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="text-white py-3 bg-brown">
+        <div class="container">
+            <div class="row align-items-center gy-2">
+                <div class="col-md-4 text-center text-md-start">
+                    <h5 class="m-0 fw-bold">🐂TORINO</h5>
+                    <p class="small  m-0 text-white mt-2 fw-medium">Guida turistica per scoprire la città</p>
+                </div>
+                <div class="col-md-4 text-center">
+                    <ul class="list-unstyled d-flex justify-content-center gap-4 m-0 text-nowrap">
+                        <li><a href="index.html" class="text-decoration-none fw-bold">🏠 Home</a></li>
+                        <li><a href="CosaVedere.html" class="text-decoration-none fw-bold">📍 Cosa vedere</a>
+                        </li>
+                        <li><a href="Itinerario.html" class="text-decoration-none fw-bold">🗺️ Itinerario</a>
+                        </li>
+                        <li><a href="Informazioni.html" class="text-decoration-none fw-bold">ℹ️
+                                Informazioni</a></li>
+                    </ul>
+                </div>
+
+                <div class="col-md-4 text-center text-md-end">
+                    <p class="small text-white m-0">&copy; 2026 Guida Torino</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>

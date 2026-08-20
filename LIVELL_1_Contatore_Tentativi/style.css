@@ -1,0 +1,23 @@
+*{
+    margin: 0;
+    padding: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    box-sizing: border-box;
+}
+
+#btn-reset{
+    color: black;
+    max-width: 200px;
+}
+
+#btn-reset:hover{
+    color: white;
+}
+
+#btn-incrementa{
+    max-width: 200px;
+}
+
+#btn-incrementa:hover {
+    background-color: #4338ca;
+}

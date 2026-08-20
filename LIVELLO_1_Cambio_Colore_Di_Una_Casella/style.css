@@ -1,0 +1,24 @@
+*{
+    margin: 0;
+    padding: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    box-sizing: border-box;
+}
+
+.riquadro{
+    background-color: aquamarine;
+    width: 250px;
+    height: 250px;
+}
+
+.btn-outline-aqua{
+    background-color: white;
+    color: aquamarine;
+    border: 2px solid aquamarine;
+
+}
+
+.btn-outline-aqua:hover{
+    background-color: aquamarine;
+    color: white;
+}
