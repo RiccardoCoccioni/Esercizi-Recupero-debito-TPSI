@@ -1,0 +1,32 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.schermo-container {
+    background-color: #212529;
+    border-radius: 8px;
+    padding: 30px;
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: center;
+}
+
+#schermo {
+    color: #00ff7f;
+    font-size: 48px;
+    font-weight: bold;
+    letter-spacing: 3px;
+}
+
+.cronometro-controlli {
+    display: flex;
+    gap: 10px;
+}
+
+.cronometro-controlli button {
+    flex: 1;
+    padding: 10px;
+}
