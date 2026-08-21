@@ -149,7 +149,7 @@ function eseguiMossa(bottoneCliccato, valore) {
         btnG2.style.width = larghezzaG2 + "px";
 
         if (larghezzaG2 < 0) {
-            divVincitore.textContent = nome2 + " ha vinto " + nome2 + " è sceso sotto lo 0.";
+            divVincitore.textContent = nome1 + " ha vinto " + nome2 + " è sceso sotto lo 0.";
             divVincitore.classList.remove("d-none");
             fermaGioco();
             return;
