@@ -1,8 +1,12 @@
 let griglia = document.getElementById("griglia");
+let punteggio = 0;
+let campoPunteggio = document.getElementById("punteggio");
+
 function generaGriglia(){
     griglia.innerHTML = "";
+    punteggio = 0;
+    aggiornaPunteggio();
 
-    let indiceCorrente = 0;
     for(let riga = 0; riga < 5; riga++)
     {
         for(let colonna = 0; colonna < 5; colonna++){
@@ -11,22 +15,28 @@ function generaGriglia(){
             let nuovaCella = document.createElement("div");
             nuovaCella.classList.add("cella");
 
-            let mioIndice = indiceCorrente;
+            let valoreCella = Math.floor(Math.random() * 11);
 
             nuovaCella.addEventListener("click", function(){
-                if(mioIndice % 2 === 0) {
+                punteggio += valoreCella;
+                aggiornaPunteggio();
+
+                nuovaCella.textContent = valoreCella;
+                nuovaCella.style.background = valoreCella
+
+                if (valoreCella > 0) {
                     nuovaCella.style.background = "green";
-                    risultato.textContent = "Hai trovato una cella speciale";
-                }
-                else {
+                } else {
                     nuovaCella.style.background = "gray";
-                    risultato.textContent = "non hai trovato una cella speciale";
                 }
             })
             
             griglia.appendChild(nuovaCella);
-            indiceCorrente++;
         }
     }
+}
+
+function aggiornaPunteggio(){
+    campoPunteggio.textContent = "Punteggio: " + punteggio;
 }
 
