@@ -1,0 +1,29 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+
+#risultato {
+    font-size: 16px;
+    font-weight: 600;
+}
+
+#risultato {
+    font-size: 16px;
+    font-weight: 600;
+    margin-top: 15px;
+    color: #198754;
+}
+
+#input-text {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    max-width: 250px;
+}
+.btn{
+    max-width: 250px;
+}

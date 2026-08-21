@@ -1,0 +1,19 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+#griglia {
+    display: grid;
+    grid-template-columns: repeat(5, 60px);
+    gap: 5px;
+}
+
+.cella {
+    width: 60px;
+    height: 60px;
+    background-color: #e9ecef;
+    border: 1px solid #ccc;
+}
