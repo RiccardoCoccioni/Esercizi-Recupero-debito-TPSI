@@ -150,7 +150,7 @@ function aggiornaIstruzioni(){
     let idGriglia = "griglia-" + giocatoreCorrente;
     let istruzioni = document.getElementById("istruzioni-" + idGriglia);
  
-    let lunghezzaNaveCorrente = LUNGHEZZE_NAVI[indiceNaveCorrente];
+    let lunghezzaNaveCorrente = lunghezzaNavi[indiceNaveCorrente];
     let celleRimaste = lunghezzaNaveCorrente - celleSelezionatePerNave.length;
  
     istruzioni.textContent = "Posiziona la nave da " + lunghezzaNaveCorrente + " celle — mancano " + celleRimaste + " celle";
