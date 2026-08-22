@@ -1,17 +1,5 @@
 let areaGioco = document.getElementById("area-gioco");
 
-
-let dimensione_griglia = 8;
-
-let lunghezzaNavi = [4, 3, 2];
-
-let celleNaviP1 = [];
-let celleNaviP2 = [];
-
-let giocatoreCorrente = "p1";
-let indiceNaveCorrente = 0;
-let celleSelezionatePerNave = [];
-
 function generaSetupIniziale(){
     let bottoneAvvia = document.createElement("button");
     bottoneAvvia.classList.add("btn-avvio");
@@ -23,16 +11,8 @@ function generaSetupIniziale(){
 
 function avviaPartita(){
     areaGioco.innerHTML = "";
+    console.log("Partita avviata, qui genereremo le griglie");
 
-    let areaP1 = creaAreaGiocatore("Player 1", "griglia-p1");
-    let areaP2 = creaAreaGiocatore("Player 2", "griglia-p2");
-
-    areaP2.classList.add("nascosta");
-
-    areaGioco.appendChild(areaP1);
-    areaGioco.appendChild(areaP2);
-
-    avviaFasePosizionamento("p1");
 }
 
 function avviaFasePosizionamento(giocatore){

@@ -18,7 +18,7 @@
 }
 
 body{
-    background: linear-gradient(180deg, var(--nero) 10%, var(--viola-scuro) 90%);
+    background: linear-gradient(180deg, var(--nero) 10%, var(--viola-scuro)) 90%;
     min-height: 100vh;
     font-family: 'VT323', monospace;
     color: var(--testo);
@@ -73,42 +73,4 @@ body{
 
 .btn-avvio:active{
     transform: scale(0.99);
-}
-
-.area-giocatore{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-bottom: 30px;
-}
-
-.area-giocatore.nascosta{
-    display: none;
-}
-
-.nome-giocatore{
-    font-family: 'Press Start 2P', monospace;
-    font-size: 16px;
-    color: var(--ciano);
-    text-align: center;
-}
-
-.griglia{
-    display: grid;
-    grid-template-columns: repeat(8, 40px);
-    grid-template-rows: repeat(8, 40px);
-    gap: 2px;
-    background-color: var(--nero);
-    padding: 6px;
-    border: 3px solid var(--magenta);
-}
-
-.cella {
-    background-color: var(--viola);
-    cursor: pointer;
-    transition: background-color 0.12s ease;
-}
-
-.cella:hover{
-    background-color: var(--viola-scuro);
 }
