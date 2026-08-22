@@ -1,0 +1,76 @@
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=swap');
+
+:root{
+    --nero: #0a0612;
+    --viola-scuro:#1e0a2e;
+    --viola: #4a1e6b;
+    --magenta: #d61ec2;
+    --magenta-illumina: #ff4dd8;
+    --giallo-verde: #d4e01e;
+    --ciano: #2ee6d6;
+    --testo: #e8dcf0;
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    background: linear-gradient(180deg, var(--nero) 10%, var(--viola-scuro)) 90%;
+    min-height: 100vh;
+    font-family: 'VT323', monospace;
+    color: var(--testo);
+    display: flex;
+    justify-content: center;
+    padding: 40px 20px;
+}
+
+.oceano{
+    width: 100%;
+    max-width: 1000px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.titolo{
+    font-family: 'Press Start 2P', monospace;
+    font-size: 28px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--giallo-verde);
+    margin-bottom: 8px;
+    text-align: center;
+}
+
+#area-gioco{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 30px;
+}
+
+.btn-avvio{
+    font-family: 'Press Start 2P', monospace;
+    font-size: 14px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    background-color: var(--viola-scuro);
+    color: var(--giallo-verde);
+    border: 3px solid var(--magenta);
+    padding: 18px 36px;
+    cursor: pointer;
+    transition: all 0.12s ease;
+}
+
+.btn-avvio:hover{
+    background-color: var(--magenta);
+    color: var(--nero);
+}
+
+.btn-avvio:active{
+    transform: scale(0.99);
+}
