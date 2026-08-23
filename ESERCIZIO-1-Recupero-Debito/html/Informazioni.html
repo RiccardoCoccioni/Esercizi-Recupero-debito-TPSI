@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -26,11 +27,161 @@
             </div>
         </nav>
     </header>
-    
-    <div class="bg-beige">
-        <div class="container"></div>
-    </div>
 
+    <div class="bg-beige">
+        <div class="container">
+            <div class="d-flex flex-column align-items-center justify-content-center mb-4 mb-md-0" id="titolo">
+                <h2 class="fw-bold">Prima di partire</h2>
+                <p>Tutto quello che ti serve per organizzare la tua visita a Torino</p>
+            </div>
+
+            <div class="row mt-5">
+                <div class="col-md-5 mb-4 mb-md-0">
+                    <div class="box-contatti shadow-sm d-flex flex-column justify-content-between">
+                        <div>
+                            <h3 class="fw-bold mb-3">Ufficio del Turismo</h3>
+                            <p><strong>📍 Indirizzo:</strong> Piazza Castello 161, Torino</p>
+                            <p><strong>🕒 Orari:</strong> Tutti i giorni dalle 9:00 alle 18:00</p>
+                            <p><strong>📞 Telefono:</strong> 011 535 181</p>
+                            <p><strong>✉️ Email:</strong> info@turismotorino.it</p>
+                        </div>
+                        <div class="mt-3 text-center">
+                            <img src="../img/grigorii-shcheglov-0jVJOf4cDqI-unsplash.jpg"
+                                alt="Immagine portico, caratteristica di Torino" class="img-fluid rounded-3"
+                                id="immagine-portico">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-7">
+                    <div class="box-form shadow-sm">
+                        <h3 class="fw-bold mb-3">Hai bisogno di aiuto?</h3>
+                        <p class="mb-4">Scrivici due righe, ti risponderemo al volo con tutte le informazioni che ti
+                            servono.</p>
+
+                        <form id="form-richiesta-info">
+                            <div class="row mb-3">
+                                <div class="col-md-6 mb-3 mb-md-0">
+                                    <label for="campo-nome" class="form-label">Nome</label>
+                                    <input type="text" id="campo-nome" name="nome" class="form-control"
+                                        placeholder="Es. Mario">
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="campo-cognome" class="form-label">Cognome</label>
+                                    <input type="text" id="campo-cognome" name="cognome" class="form-control"
+                                        placeholder="Es. Rossi">
+                                </div>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="campo-email" class="form-label">Indirizzo Email</label>
+                                <input type="email" id="campo-email" name="email" class="form-control"
+                                    placeholder="nome@esempio.com">
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="scelta-argomento" class="form-label">Di cosa vorresti parlare?</label>
+                                <select id="scelta-argomento" name="argomento" class="form-select">
+                                    <option value="">Scegli un argomento</option>
+                                    <option value="prenotazione">Prenotazione visita guidata</option>
+                                    <option value="informazioni">Consigli generali sulla città</option>
+                                    <option value="gruppi">Organizzazione gite per scuole o gruppi</option>
+                                    <option value="altro">Altro</option>
+                                </select>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="campo-messaggio" class="form-label">Il tuo messaggio</label>
+                                <textarea id="campo-messaggio" name="messaggio" class="form-control" rows="4"
+                                    placeholder="Raccontaci cosa vorresti scoprire o sapere su Torino"></textarea>
+                            </div>
+
+                            <button type="button" id="btn-invia" class="btn-invia">Invia richiesta</button>
+                            <p id="esito-form" class="mt-3 mb-0"></p>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <div class="informazioni-pratiche mt-5 mb-5">
+                <h3 class="text-white">Le risposte alle domande più comuni</h3>
+
+                <div class="accordion shadow-sm" id="accordionDomandeFrequenti">
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#rispostaArrivo">
+                                Come si arriva facilmente a Torino?
+                            </button>
+                        </h2>
+                        <div id="rispostaArrivo" class="accordion-collapse collapse"
+                            data-bs-parent="#accordionDomandeFrequenti">
+                            <div class="accordion-body">
+                                <p>Arrivare a Torino è molto semplice. Se atterri all'aeroporto di Caselle, c'è il treno
+                                    che ti porta dritto in centro. Se viaggi in treno, la stazione di Porta Nuova ti
+                                    lascerà direttamente nel cuore della vita torinese. Per quanto riguarda l'auto
+                                    invece, la città è ben collegata da tutte le principali autostrade (come la A4 da
+                                    Milano o la A32 se arrivi dalla montagna).</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#rispostaPeriodo">
+                                Qual è il periodo migliore dell'anno per visitare Torino?
+                            </button>
+                        </h2>
+                        <div id="rispostaPeriodo" class="accordion-collapse collapse"
+                            data-bs-parent="#accordionDomandeFrequenti">
+                            <div class="accordion-body">
+                                <p>La primavera e l'inizio dell'autunno regalano giornate stupende, temperature perfette
+                                    e meno confusione in giro. Anche dicembre ha il suo grazie alle luci d'artista e ai
+                                    mercatini sotto i portici, mentre l'estate può essere un po' più calda ma offre
+                                    tanti eventi all'aperto.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#rispostaMuoversi">
+                                È vero che si gira tutta a piedi?
+                            </button>
+                        </h2>
+                        <div id="rispostaMuoversi" class="accordion-collapse collapse"
+                            data-bs-parent="#accordionDomandeFrequenti">
+                            <div class="accordion-body">
+                                <p>Assolutamente sì, il centro storico è molto comodo da girare a piedi, anche grazie ai
+                                    chilometri di portici storici che proteggono da sole o cattivo tempo. Per le tratte
+                                    più lunghe, la metropolitana (linea 1) e la rete di bus e tram coprono ogni angolo
+                                    della città in pochissimo tempo.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#rispostaCard">
+                                Conviene comprare la Torino+Piemonte Card?
+                            </button>
+                        </h2>
+                        <div id="rispostaCard" class="accordion-collapse collapse"
+                            data-bs-parent="#accordionDomandeFrequenti">
+                            <div class="accordion-body">
+                                <p>Se hai in programma di visitare almeno 2 o 3 musei (come il Cinema o l'Egizio), la
+                                    risposta è si. Ti fa risparmiare un bel po' sui biglietti d'ingresso e include
+                                    agevolazioni anche sui trasporti e su altre attrazioni imperdibili.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
     <footer class="text-white py-3 mt-5 bg-brown">
         <div class="container">
             <div class="row align-items-center gy-2">
@@ -56,9 +207,10 @@
             </div>
         </div>
     </footer>
-    <script src="../js/script.js"></script>
+    <script src="../js/informazioni.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
         crossorigin="anonymous"></script>
 </body>
+
 </html>

@@ -9,6 +9,8 @@
     --giallo-verde: #d4e01e;
     --ciano: #2ee6d6;
     --testo: #e8dcf0;
+    --bianco: #f0e8ed;
+    --rosso: #d92b45;
 }
 
 *{
@@ -43,6 +45,7 @@ body{
     color: var(--giallo-verde);
     margin-bottom: 8px;
     text-align: center;
+    text-shadow:3px 0 var(--rosso),-3px 0 var(--ciano);
 }
 
 #area-gioco{
@@ -151,4 +154,12 @@ body{
     color: var(--magenta-illumina);
     margin-bottom: 20px;
     text-align: center;
+}
+@keyframes flashColpito{
+    0% {background-color: var(--bianco);}
+    100% {background-color: var(--rosso);}
+}
+
+.cella.colpito{
+    animation: flashColpito 0.3s ease-out;
 }

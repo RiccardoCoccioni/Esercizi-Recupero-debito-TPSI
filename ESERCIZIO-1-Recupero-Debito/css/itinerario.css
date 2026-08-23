@@ -198,3 +198,37 @@ footer ul li a:hover {
     transform: translateY(-5px) scale(1.2);
     color: #A8A492;
 }
+
+
+@media (max-width: 767px) {
+    #navbar .container {
+        flex-direction: column;
+        gap: 10px;
+        padding-bottom: 10px;
+    }
+ 
+    #listaNav {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 10px;
+    }
+ 
+    body {
+        padding-top: 110px;
+    }
+ 
+    .box-contatti,
+    .box-form {
+        padding: 20px;
+    }
+ 
+    footer .row > div {
+        margin-bottom: 10px;
+    }
+ 
+    footer ul {
+        flex-wrap: wrap;
+        gap: 12px !important;
+    }
+}
+

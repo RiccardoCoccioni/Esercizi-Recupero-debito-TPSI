@@ -79,13 +79,116 @@ body {
     background-color: #524646;
 }
 
+.box-contatti {
+    background-color: white;
+    border-radius: 12px;
+    padding: 25px 30px;
+    height: 100%;
+}
+ 
+.box-contatti p {
+    margin-bottom: 12px;
+}
+ 
+.box-form {
+    background-color: white;
+    border-radius: 12px;
+    padding: 25px 30px;
+    position: relative;
+}
+ 
+.box-form::before {
+    content: "";
+    background-color: white;
+    width: 100%;
+    height: 100%;
+    top: -15px;
+    left: 15px;
+    position: absolute;
+    border-radius: 12px;
+    z-index: -1;
+    box-shadow: 0 0 5px 10px rgba(0, 0, 0, 0.08);
+}
+ 
+.box-form .form-control{
+    border-radius: 8px;
+}
+.box-form .form-select {
+    border-radius: 8px;
+}
+ 
+.box-form .form-control:focus{
+    border-color: #EC5B38;
+    box-shadow: 0 0 0 0.2rem rgba(236, 91, 56, 0.25);
+}
+.box-form .form-select:focus {
+    border-color: #EC5B38;
+    box-shadow: 0 0 0 0.2rem rgba(236, 91, 56, 0.25);
+}
+ 
+.btn-invia {
+    background-color: #EC5B38;
+    color: white;
+    border: none;
+    font-weight: bold;
+    padding: 10px 28px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: transform 0.2s ease, background-color 0.2s ease;
+}
 
+#immagine-portico{
+    max-height: fit-content;
+    max-width: auto;
+}
+ 
+.btn-invia:hover {
+    background-color: #524646;
+    transform: translateY(-2px);
+}
+ 
+.btn-invia:active {
+    transform: translateY(0);
+}
+ 
+#esito-form.errore {
+    color: #b3261e;
+    font-weight: bold;
+}
+ 
+#esito-form.successo {
+    color: #2e7d32;
+    font-weight: bold;
+}
+
+.informazioni-pratiche {
+    margin-top: 40px;
+}
+ 
+.informazioni-pratiche h3 {
+    margin-bottom: 15px;
+}
+ 
+.accordion-button:not(.collapsed) {
+    background-color: #EC5B38;
+    color: white;
+}
+ 
+.accordion-button.collapsed {
+    background-color: white;
+    color: #524646;
+}
+ 
+.accordion-button:focus {
+    box-shadow: none;
+}
+ 
 footer {
     width: 100vw;
     position: relative;
     z-index: 9999;
 }
-
+ 
 footer ul li a {
     display: inline-flex !important;
     align-items: center;
@@ -93,8 +196,40 @@ footer ul li a {
     color: white;
     transition: transform 0.2s ease, color 0.2s ease;
 }
-
+ 
 footer ul li a:hover {
     transform: translateY(-5px) scale(1.2);
     color: #A8A492;
+}
+
+@media (max-width: 767px) {
+    #navbar .container {
+        flex-direction: column;
+        gap: 10px;
+        padding-bottom: 10px;
+    }
+ 
+    #listaNav {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 10px;
+    }
+ 
+    body {
+        padding-top: 110px;
+    }
+ 
+    .box-contatti,
+    .box-form {
+        padding: 20px;
+    }
+ 
+    footer .row > div {
+        margin-bottom: 10px;
+    }
+ 
+    footer ul {
+        flex-wrap: wrap;
+        gap: 12px !important;
+    }
 }

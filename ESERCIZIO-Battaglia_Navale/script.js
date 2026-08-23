@@ -152,10 +152,8 @@ function gestisciClickPosizionamento(cella){
     if (celleSelezionatePerNave.length === lunghezzaNaveCorrente) {
         if (giocatoreCorrente === "p1") {
             celleNaviP1.push(celleSelezionatePerNave);
-            tentativiP1++;
         } else {
             celleNaviP2.push(celleSelezionatePerNave);
-            tentativiP2++;
         }
 
         indiceNaveCorrente++;
@@ -257,16 +255,21 @@ function aggiornaDisplayTimer(){
     
 function terminaPerTempoScaduto(){
     fasePartita = "finita";
-
     let messaggio = document.getElementById("messaggio-finale");
-
-    if(celleColpiteNaviP2 > celleColpiteNaviP1){
-
-        messaggio.textContent = "Tempo scaduto, player 2 vince per danni inflitti";
+    
+    let vincitore;
+    if (celleColpiteNaviP2 > celleColpiteNaviP1) {
+        vincitore = "PLAYER 1";
+    } else {
+        vincitore = "PLAYER 2";
     }
-    else{
-        messaggio.textContent = "Tempo scaduto, player 1 vince per danni inflitti";
-    }
+
+    messaggio.innerHTML = `
+        TIME IS UP!<br>
+        ${vincitore} WINS BY DAMAGE<br><br>
+        HITS P1: ${celleColpiteNaviP2}<br>
+        HITS P2: ${celleColpiteNaviP1}
+    `;
 
     mostraBottoneNuovaPartita();
 }
@@ -351,7 +354,7 @@ function gestisciSparo(cellaCliccata, grigliaBersaglio){
     }
     if(colpoASegno){
         cellaCliccata.classList.add("colpito");
-        cellaCliccata.textContent = "X";
+        cellaCliccata.textContent = "HIT";
 
         if(grigliaBersaglio === "p1"){
             celleColpiteNaviP1++;
@@ -360,9 +363,15 @@ function gestisciSparo(cellaCliccata, grigliaBersaglio){
         }
     } else{
         cellaCliccata.classList.add("acqua");
-        cellaCliccata.textContent = "~";
+        cellaCliccata.textContent = "MISS";
     }
 
+    if(giocatoreCorrente === "p1"){
+        tentativiP1++;
+    }
+    else{
+        tentativiP2++;
+    }
     aggiornaStatistiche();
 
     if(celleColpiteNaviP1 === totaleCelleNaviP1){
@@ -389,36 +398,50 @@ function gestisciSparo(cellaCliccata, grigliaBersaglio){
 function terminaPartita(PlayerVincitore){
     clearInterval(timerPartita);
     fasePartita = "finita";
-
     let messaggio = document.getElementById("messaggio-finale");
-    messaggio.textContent = PlayerVincitore + " ha vinto. Tentativi p1: " + tentativiP1 + " Tentativi p2: " + tentativiP2;
-
+    
+    messaggio.innerHTML = `
+        ${PlayerVincitore.toUpperCase()} HAS WON!<br><br>
+        ATTACKS P1: ${tentativiP1}<br>
+        ATTACKS P2: ${tentativiP2}
+    `;
+    
     mostraBottoneNuovaPartita();
 }
 
 function isCellaValida(nuovaCella) {
-    if(celleSelezionatePerNave.length === 0){
+    if (celleSelezionatePerNave.length === 0) {
         return true;
     }
 
-    let rigaNuova = parseInt(nuovaCella.dataset.riga);
-    let colNuova = parseInt(nuovaCella.dataset.colonna);
+    let rigaNuova = nuovaCella.dataset.riga;
+    let colNuova = nuovaCella.dataset.colonna;
 
     let ultimaCella = celleSelezionatePerNave[celleSelezionatePerNave.length - 1];
-    let rigaUltima = parseInt(ultimaCella.dataset.riga);
-    let colUltima = parseInt(ultimaCella.dataset.colonna);
+    let rigaUltima = ultimaCella.dataset.riga;
+    let colUltima = ultimaCella.dataset.colonna;
 
-    let diffRiga = Math.abs(rigaNuova - rigaUltima);
-    let diffCol = Math.abs(colNuova - colUltima);
+    let diffRiga = rigaNuova - rigaUltima;
+    let diffCol = colNuova - colUltima;
 
-    if (diffRiga + diffCol !== 1) {
+    let vicina = false;
+
+    if ((diffRiga === 1 || diffRiga === -1) && diffCol === 0) {
+        vicina = true;
+    }
+
+    if ((diffCol === 1 || diffCol === -1) && diffRiga === 0) {
+        vicina = true;
+    }
+
+    if (vicina === false) {
         return false;
     }
 
     if (celleSelezionatePerNave.length >= 2) {
         let primaCella = celleSelezionatePerNave[0];
-        let rigaPrima = parseInt(primaCella.dataset.riga);
-        let colPrima = parseInt(primaCella.dataset.colonna);
+        let rigaPrima = primaCella.dataset.riga;
+        let colPrima = primaCella.dataset.colonna;
 
         if (rigaPrima === rigaUltima && rigaNuova !== rigaPrima) {
             return false;
@@ -476,4 +499,5 @@ function resettaGioco(){
 
     avviaPartita();
 }
+
 
