@@ -4,6 +4,14 @@ let lunghezzaNavi = [4, 3, 2];
  
 let celleNaviP1 = [];
 let celleNaviP2 = [];
+
+let tentativiP1 = 0;
+let tentativiP2 = 0;
+
+let celleColpiteNaviP1 = 0;
+let celleColpiteNaviP2 = 0;
+let totaleCelleNaviP1 = 0;
+let totaleCelleNaviP2 = 0;
  
 let giocatoreCorrente = "p1";
 let indiceNaveCorrente = 0;
@@ -51,7 +59,10 @@ function creaAreaGiocatore(nomeGiocatore, idGriglia){
     let istruzioni = document.createElement("p");
     istruzioni.classList.add("istruzioni");
     istruzioni.id = "istruzioni-" + idGriglia;
- 
+
+    let statistiche = document.createElement("p");
+    statistiche.classList.add("statistiche");
+    statistiche.id= "statistiche - " + idGriglia;
     let griglia = creaGriglia(idGriglia);
  
     areaGiocatore.appendChild(etichetta);
@@ -68,7 +79,9 @@ function avviaPartita(){
     let areaP2 = creaAreaGiocatore("Player 2", "griglia-p2");
  
     areaP2.classList.add("nascosta");
- 
+    
+    let areaMessaggio = document.createElement("p");
+    areaMessaggio.id = "messaggio-finale"; 
     areaGioco.appendChild(areaP1);
     areaGioco.appendChild(areaP2);
  
@@ -128,8 +141,10 @@ function gestisciClickPosizionamento(cella){
     if (celleSelezionatePerNave.length === lunghezzaNaveCorrente) {
         if (giocatoreCorrente === "p1") {
             celleNaviP1.push(celleSelezionatePerNave);
+            tentativiP1++;
         } else {
             celleNaviP2.push(celleSelezionatePerNave);
+            tentativiP2++;
         }
 
         indiceNaveCorrente++;
@@ -179,6 +194,9 @@ function avviaCombattimento(){
 
     fasePartita = "combattimento";
 
+    totaleCelleNaviP1 = contaTotaleCelleNavi(celleNaviP1);
+    totaleCelleNaviP2 = contaTotaleCelleNavi(celleNaviP2);
+
     document.getElementById("area-griglia-p1").classList.remove("nascosta");
     document.getElementById("area-griglia-p2").classList.remove("nascosta");
 
@@ -193,7 +211,32 @@ function avviaCombattimento(){
     document.getElementById("istruzioni-griglia-p1").textContent = "la tua flotta, attendo il tuo turno";
     document.getElementById("istruzioni-griglia-p2").textContent = "griglia nemica: spara";
 
+    aggiornaTestoTurno();
+    aggiornaStatistiche();
     attivaClickCombattimento();
+}
+
+function aggiornaTestoTurno(){
+    if(giocatoreCorrente === "p1"){
+        document.getElementById("istruzioni-griglia-p1").textContent = "La tua flotta - attendi il tuo turno";
+
+        document.getElementById("istruzioni-griglia-p2").textContent = "Griglia nemica, spara";
+    }
+    else{
+        document.getElementById("istruzioni-griglia-p2").textContent = "La tua flotta - attendi il tuo turno";
+
+        document.getElementById("istruzioni-griglia-p1").textContent = "Griglia nemica, spara";
+    }
+}
+
+
+function aggiornaStatistiche(){
+    let celleRimasteP1 = totaleCelleNaviP1 - celleColpiteNaviP1;
+    let celleRimasteP2 = totaleCelleNaviP2 - celleColpiteNaviP2;
+
+    document.getElementById("statistiche-griglia-p1").textContent = "parti di nave rimaste: " + celleRimasteP1 + " - tentativi ricevuti: " + tentativiP2;
+
+    document.getElementById("statistiche-griglia-p2").textContent = "parti di nave rimaste: " + celleRimasteP2 + " - tentativi ricevuti: " + tentativiP1;
 }
 
 function attivaClickCombattimento(){
@@ -253,9 +296,27 @@ function gestisciSparo(cellaCliccata, grigliaBersaglio){
     if(colpoASegno){
         cellaCliccata.classList.add("colpito");
         cellaCliccata.textContent = "X";
+
+        if(grigliaBersaglio === "p1"){
+            celleColpiteNaviP1++;
+        } else{
+            celleColpiteNaviP2++;
+        }
     } else{
         cellaCliccata.classList.add("acqua");
         cellaCliccata.textContent = "~";
+    }
+
+    aggiornaStatistiche();
+
+    if(celleColpiteNaviP1 === totaleCelleNaviP1){
+        terminaPartita("Player 2");
+        return;
+    }
+
+    if(celleColpiteNaviP2 === totaleCelleNaviP2){
+        terminaPartita("Player 1");
+        return;
     }
 
     if(giocatoreCorrente === "p1"){
@@ -267,6 +328,13 @@ function gestisciSparo(cellaCliccata, grigliaBersaglio){
         document.getElementById("istruzioni-griglia-p1").textContent = "la tua flotta. Attendi";
         document.getElementById("istruzioni-griglia-p2").textContent = "griglia Nemica: Spara";
     }
+}
+
+function terminaPartita(PlayerVincitore){
+    fasePartita = "finita";
+
+    let messaggio = document.getElementById("messaggio-finale");
+    messaggio.textContent = PlayerVincitore + " ha vinto. Tentativi p1: " + tentativiP1 + " Tentativi p2: " + tentativiP2;
 }
 
 function isCellaValida(nuovaCella) {
@@ -302,4 +370,13 @@ function isCellaValida(nuovaCella) {
     }
 
     return true;
+}
+
+function contaTotaleCelleNavi(celleNavi){
+    let totale = 0;
+    for (let i = 0; i < celleNavi.length; i++) {
+        totale += celleNavi[i].length;
+        
+    }
+    return totale;
 }
