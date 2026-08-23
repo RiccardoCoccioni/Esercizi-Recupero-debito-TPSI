@@ -267,6 +267,8 @@ function terminaPerTempoScaduto(){
     else{
         messaggio.textContent = "Tempo scaduto, player 1 vince per danni inflitti";
     }
+
+    mostraBottoneNuovaPartita();
 }
 
 
@@ -390,6 +392,8 @@ function terminaPartita(PlayerVincitore){
 
     let messaggio = document.getElementById("messaggio-finale");
     messaggio.textContent = PlayerVincitore + " ha vinto. Tentativi p1: " + tentativiP1 + " Tentativi p2: " + tentativiP2;
+
+    mostraBottoneNuovaPartita();
 }
 
 function isCellaValida(nuovaCella) {
@@ -436,3 +440,40 @@ function contaTotaleCelleNavi(celleNavi){
 
     return totale;
 }
+
+
+function mostraBottoneNuovaPartita(){
+
+    let bottoneNuovaPartita = document.createElement("button");
+    bottoneNuovaPartita.classList.add("btn-avvio");
+    bottoneNuovaPartita.textContent = "Nuova partita";
+    bottoneNuovaPartita.addEventListener("click", resettaGioco);
+
+    areaGioco.appendChild(bottoneNuovaPartita);
+}
+
+function resettaGioco(){
+    celleNaviP1 = [];
+    celleNaviP2 = [];
+
+    tentativiP1 = 0;
+    tentativiP2 = 0;
+
+    celleColpiteNaviP1 = 0;
+    celleColpiteNaviP2 = 0;
+    totaleCelleNaviP1 = 0;
+    totaleCelleNaviP2 = 0;
+
+    giocatoreCorrente = "p1";
+    indiceNaveCorrente = 0;
+    celleSelezionatePerNave = [];
+
+    fasePartita = "posizionamento";
+
+    secondiRimasti = 180;
+
+    clearInterval(timerPartita);
+
+    avviaPartita();
+}
+
