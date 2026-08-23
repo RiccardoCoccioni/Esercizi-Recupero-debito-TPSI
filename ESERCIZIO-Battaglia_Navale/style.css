@@ -144,3 +144,11 @@ body{
     opacity: 0.7;
     cursor: not-allowed;
 }
+
+.display-timer {
+    font-family: 'Press Start 2P', monospace;
+    font-size: 18px;
+    color: var(--magenta-illumina);
+    margin-bottom: 20px;
+    text-align: center;
+}

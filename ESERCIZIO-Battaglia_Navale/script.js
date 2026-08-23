@@ -1,7 +1,11 @@
 let areaGioco = document.getElementById("area-gioco");
 let dimensione_griglia = 8;
 let lunghezzaNavi = [4, 3, 2];
- 
+
+
+let secondiRimasti = 180;
+let timerPartita;
+
 let celleNaviP1 = [];
 let celleNaviP2 = [];
 
@@ -75,7 +79,11 @@ function creaAreaGiocatore(nomeGiocatore, idGriglia){
  
 function avviaPartita(){
     areaGioco.innerHTML = "";
- 
+    
+    let displayTimer = document.createElement("p");
+    displayTimer.id = "display-timer";
+    displayTimer.classList.add("display-timer");
+
     let areaP1 = creaAreaGiocatore("Player 1", "griglia-p1");
     let areaP2 = creaAreaGiocatore("Player 2", "griglia-p2");
  
@@ -84,6 +92,7 @@ function avviaPartita(){
     let areaMessaggio = document.createElement("p");
     areaMessaggio.id = "messaggio-finale"; 
     areaMessaggio.classList.add("messaggio-finale");
+    areaGioco.appendChild(displayTimer);
     areaGioco.appendChild(areaP1);
     areaGioco.appendChild(areaP2);
     areaGioco.appendChild(areaMessaggio);
@@ -216,7 +225,50 @@ function avviaCombattimento(){
     aggiornaTestoTurno();
     aggiornaStatistiche();
     attivaClickCombattimento();
+    attivaCountdown();
 }
+
+function attivaCountdown(){
+
+    aggiornaDisplayTimer();
+
+    timerPartita = setInterval(function () {
+    
+        secondiRimasti--;
+        aggiornaDisplayTimer();
+
+        if (secondiRimasti <= 0) {
+            clearInterval(timerPartita);
+            terminaPerTempoScaduto();
+        }
+    }, 1000);
+}
+
+function aggiornaDisplayTimer(){
+    let minuti = Math.floor(secondiRimasti / 60);
+    let secondi = secondiRimasti % 60;
+
+    if(secondi < 10){
+        secondi = "0" + secondi;
+    }
+
+    document.getElementById("display-timer").textContent = "Tempo rimasto: " + minuti + ": " + secondi;
+}
+    
+function terminaPerTempoScaduto(){
+    fasePartita = "finita";
+
+    let messaggio = document.getElementById("messaggio-finale");
+
+    if(celleColpiteNaviP2 > celleColpiteNaviP1){
+
+        messaggio.textContent = "Tempo scaduto, player 2 vince per danni inflitti";
+    }
+    else{
+        messaggio.textContent = "Tempo scaduto, player 1 vince per danni inflitti";
+    }
+}
+
 
 function aggiornaTestoTurno(){
     if(giocatoreCorrente === "p1"){
@@ -333,6 +385,7 @@ function gestisciSparo(cellaCliccata, grigliaBersaglio){
 }
 
 function terminaPartita(PlayerVincitore){
+    clearInterval(timerPartita);
     fasePartita = "finita";
 
     let messaggio = document.getElementById("messaggio-finale");
