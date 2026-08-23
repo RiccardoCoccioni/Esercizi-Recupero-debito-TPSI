@@ -8,7 +8,9 @@ let celleNaviP2 = [];
 let giocatoreCorrente = "p1";
 let indiceNaveCorrente = 0;
 let celleSelezionatePerNave = [];
- 
+
+
+let fasePartita = "posizionamento";
 function generaSetupIniziale(){
     let bottoneAvvia = document.createElement("button");
     bottoneAvvia.classList.add("btn-avvio");
@@ -105,38 +107,47 @@ function avviaClickPosizionamento(giocatore){
 }
  
 function gestisciClickPosizionamento(cella){
+    if(fasePartita !== "posizionamento"){
+        return;
+    }
+
     if (cella.classList.contains("nave-piazzata")) {
         return;
     }
- 
+
+    if (!isCellaValida(cella)) {
+        console.log("Mossa non valida: devi piazzare le navi in linea retta");
+        return;
+    }
+
     cella.classList.add("nave-piazzata");
     celleSelezionatePerNave.push(cella);
- 
+
     let lunghezzaNaveCorrente = lunghezzaNavi[indiceNaveCorrente];
- 
+
     if (celleSelezionatePerNave.length === lunghezzaNaveCorrente) {
         if (giocatoreCorrente === "p1") {
             celleNaviP1.push(celleSelezionatePerNave);
         } else {
             celleNaviP2.push(celleSelezionatePerNave);
         }
- 
+
         indiceNaveCorrente++;
         celleSelezionatePerNave = [];
- 
+
         if (indiceNaveCorrente === lunghezzaNavi.length) {
             finisciPosizionamento();
             return;
         }
     }
- 
+
     aggiornaIstruzioni();
 }
  
 function finisciPosizionamento(){
     let idGriglia = "griglia-" + giocatoreCorrente;
     let istruzioni = document.getElementById("istruzioni-" + idGriglia);
-    istruzioni.textContent = "Flotta pronta!";
+    istruzioni.textContent = "Flotta pronta";
  
     let bottoneConferma = document.createElement("button");
     bottoneConferma.classList.add("btn-avvio");
@@ -157,7 +168,138 @@ function passaAlProssimoGiocatore(){
         avviaFasePosizionamento("p2");
     } else {
         console.log("Entrambi i giocatori hanno posizionato le navi. Si passa alla fase di combattimento.");
+        avviaCombattimento();
     }
 }
  
 generaSetupIniziale();
+
+
+function avviaCombattimento(){
+
+    fasePartita = "combattimento";
+
+    document.getElementById("area-griglia-p1").classList.remove("nascosta");
+    document.getElementById("area-griglia-p2").classList.remove("nascosta");
+
+    let tutteLeCelle = document.querySelectorAll(".cella");
+
+    for(let i = 0; i < tutteLeCelle.length; i++){
+        tutteLeCelle[i].classList.remove("nave-piazzata");
+    }
+
+    giocatoreCorrente = "p1";
+    
+    document.getElementById("istruzioni-griglia-p1").textContent = "la tua flotta, attendo il tuo turno";
+    document.getElementById("istruzioni-griglia-p2").textContent = "griglia nemica: spara";
+
+    attivaClickCombattimento();
+}
+
+function attivaClickCombattimento(){
+    let celleP1 = document.getElementById("griglia-p1").querySelectorAll(".cella");
+    let celleP2 = document.getElementById("griglia-p2").querySelectorAll(".cella");
+
+    for(let i = 0; i < celleP1.length; i++){
+        celleP1[i].addEventListener("click", function(){
+            gestisciSparo(celleP1[i], "p1");
+        });
+    }
+
+    for(let i = 0; i < celleP2.length; i++){
+        celleP2[i].addEventListener("click", function(){
+            gestisciSparo(celleP2[i], "p2");
+        });
+    }
+}
+
+function gestisciSparo(cellaCliccata, grigliaBersaglio){
+    if(fasePartita !== "combattimento"){
+        return;
+    }
+
+    if(giocatoreCorrente === grigliaBersaglio){
+        console.log("Non puoi sparare alla tua stessa flotta");
+        return;
+    }
+
+    if(cellaCliccata.classList.contains("acqua") || cellaCliccata.classList.contains("colpito")){
+        console.log("Hai già sparato qui");
+        return;
+    }
+
+    let flottaDaControllare;
+
+    if (grigliaBersaglio === "p1") {
+        flottaDaControllare = celleNaviP1;
+    } else {
+        flottaDaControllare = celleNaviP2;
+    }
+
+    let colpoASegno = false;
+
+    for(let i = 0; i < flottaDaControllare.length; i++){
+        let nave = flottaDaControllare[i];
+        for(let j = 0; j < nave.length; j++){
+            if(nave[j] === cellaCliccata){
+                colpoASegno = true;
+                break;
+            }
+        }
+        if (colpoASegno){
+            break;
+        }
+    }
+    if(colpoASegno){
+        cellaCliccata.classList.add("colpito");
+        cellaCliccata.textContent = "X";
+    } else{
+        cellaCliccata.classList.add("acqua");
+        cellaCliccata.textContent = "~";
+    }
+
+    if(giocatoreCorrente === "p1"){
+        giocatoreCorrente = "p2";
+        document.getElementById("istruzioni-griglia-p1").textContent = "griglia nemica: spara";
+        document.getElementById("istruzioni-griglia-p2").textContent = "la tua flotta. Attendi";
+    } else{
+        giocatoreCorrente = "p1";
+        document.getElementById("istruzioni-griglia-p1").textContent = "la tua flotta. Attendi";
+        document.getElementById("istruzioni-griglia-p2").textContent = "griglia Nemica: Spara";
+    }
+}
+
+function isCellaValida(nuovaCella) {
+    if(celleSelezionatePerNave.length === 0){
+        return true;
+    }
+
+    let rigaNuova = parseInt(nuovaCella.dataset.riga);
+    let colNuova = parseInt(nuovaCella.dataset.colonna);
+
+    let ultimaCella = celleSelezionatePerNave[celleSelezionatePerNave.length - 1];
+    let rigaUltima = parseInt(ultimaCella.dataset.riga);
+    let colUltima = parseInt(ultimaCella.dataset.colonna);
+
+    let diffRiga = Math.abs(rigaNuova - rigaUltima);
+    let diffCol = Math.abs(colNuova - colUltima);
+
+    if (diffRiga + diffCol !== 1) {
+        return false;
+    }
+
+    if (celleSelezionatePerNave.length >= 2) {
+        let primaCella = celleSelezionatePerNave[0];
+        let rigaPrima = parseInt(primaCella.dataset.riga);
+        let colPrima = parseInt(primaCella.dataset.colonna);
+
+        if (rigaPrima === rigaUltima && rigaNuova !== rigaPrima) {
+            return false;
+        }
+        if (colPrima === colUltima && colNuova !== colPrima) {
+            return false;
+        }
+    }
+
+    return true;
+}

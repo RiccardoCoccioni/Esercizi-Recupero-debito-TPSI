@@ -18,7 +18,7 @@
 }
 
 body{
-    background: linear-gradient(180deg, var(--nero) 10%, var(--viola-scuro)) 90%;
+    background: linear-gradient(180deg, var(--nero) 10%, var(--viola-scuro) 90% );
     min-height: 100vh;
     font-family: 'VT323', monospace;
     color: var(--testo);
@@ -73,4 +73,74 @@ body{
 
 .btn-avvio:active{
     transform: scale(0.99);
+}
+
+.area-giocatore {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+.area-giocatore.nascosta {
+    display: none;
+}
+
+.nome-giocatore {
+    font-family: 'Press Start 2P', monospace;
+    font-size: 16px;
+    color: var(--ciano);
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+.istruzioni {
+    margin-bottom: 15px;
+}
+
+.griglia {
+    display: grid;
+    grid-template-columns: repeat(8, 40px);
+    grid-template-rows: repeat(8, 40px);
+    gap: 2px;
+    background-color: var(--nero);
+    padding: 6px;
+    border: 3px solid var(--magenta);
+}
+
+.cella {
+    background-color: var(--viola);
+    cursor: pointer;
+    transition: background-color 0.12s ease;
+}
+
+.cella:hover {
+    background-color: var(--viola-scuro);
+}
+.cella.nave-piazzata {
+    background-color: var(--magenta-illumina);
+    box-shadow: 0 0 10px var(--magenta-illumina);
+}
+
+
+.cella.colpito {
+    background-color: #ff003c; 
+    color: var(--nero);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 24px;
+    box-shadow: inset 0 0 10px #8a0020;
+    cursor: not-allowed;
+}
+
+.cella.acqua {
+    background-color: #0b4f6c;
+    color: var(--ciano);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 24px;
+    opacity: 0.7;
+    cursor: not-allowed;
 }
