@@ -155,6 +155,7 @@ body{
     margin-bottom: 20px;
     text-align: center;
 }
+
 @keyframes flashColpito{
     0% {background-color: var(--bianco);}
     100% {background-color: var(--rosso);}

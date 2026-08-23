@@ -265,10 +265,12 @@ function terminaPerTempoScaduto(){
     }
 
     messaggio.innerHTML = `
-        TIME IS UP!<br>
+        ====================<br>
+        TIME IS UP<br>
+        ====================<br>
         ${vincitore} WINS BY DAMAGE<br><br>
-        HITS P1: ${celleColpiteNaviP2}<br>
-        HITS P2: ${celleColpiteNaviP1}
+        HITS P1 — ${celleColpiteNaviP2}<br>
+        HITS P2 — ${celleColpiteNaviP1}
     `;
 
     mostraBottoneNuovaPartita();
@@ -398,17 +400,19 @@ function gestisciSparo(cellaCliccata, grigliaBersaglio){
 function terminaPartita(PlayerVincitore){
     clearInterval(timerPartita);
     fasePartita = "finita";
+
     let messaggio = document.getElementById("messaggio-finale");
-    
     messaggio.innerHTML = `
-        ${PlayerVincitore.toUpperCase()} HAS WON!<br><br>
-        ATTACKS P1: ${tentativiP1}<br>
-        ATTACKS P2: ${tentativiP2}
+        ====================<br>
+        VICTORY<br>
+        ====================<br>
+        ${PlayerVincitore.toUpperCase()} HAS WON<br><br>
+        ATTACKS P1 — ${tentativiP1}<br>
+        ATTACKS P2 — ${tentativiP2}
     `;
-    
+
     mostraBottoneNuovaPartita();
 }
-
 function isCellaValida(nuovaCella) {
     if (celleSelezionatePerNave.length === 0) {
         return true;
