@@ -62,11 +62,12 @@ function creaAreaGiocatore(nomeGiocatore, idGriglia){
 
     let statistiche = document.createElement("p");
     statistiche.classList.add("statistiche");
-    statistiche.id= "statistiche - " + idGriglia;
+    statistiche.id= "statistiche-" + idGriglia;
     let griglia = creaGriglia(idGriglia);
  
     areaGiocatore.appendChild(etichetta);
     areaGiocatore.appendChild(istruzioni);
+    areaGiocatore.appendChild(statistiche);
     areaGiocatore.appendChild(griglia);
  
     return areaGiocatore;
@@ -82,9 +83,10 @@ function avviaPartita(){
     
     let areaMessaggio = document.createElement("p");
     areaMessaggio.id = "messaggio-finale"; 
+    areaMessaggio.classList.add("messaggio-finale");
     areaGioco.appendChild(areaP1);
     areaGioco.appendChild(areaP2);
- 
+    areaGioco.appendChild(areaMessaggio);
     avviaFasePosizionamento("p1");
 }
  
@@ -372,11 +374,12 @@ function isCellaValida(nuovaCella) {
     return true;
 }
 
+
 function contaTotaleCelleNavi(celleNavi){
     let totale = 0;
-    for (let i = 0; i < celleNavi.length; i++) {
+    for(let i = 0; i < celleNavi.length; i++){
         totale += celleNavi[i].length;
-        
     }
+
     return totale;
 }
