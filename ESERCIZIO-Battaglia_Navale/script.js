@@ -92,6 +92,7 @@ function avviaPartita(){
     let areaMessaggio = document.createElement("p");
     areaMessaggio.id = "messaggio-finale"; 
     areaMessaggio.classList.add("messaggio-finale");
+    areaMessaggio.style.display = "none";
     areaGioco.appendChild(displayTimer);
     areaGioco.appendChild(areaP1);
     areaGioco.appendChild(areaP2);
@@ -402,6 +403,7 @@ function terminaPartita(PlayerVincitore){
     fasePartita = "finita";
 
     let messaggio = document.getElementById("messaggio-finale");
+    messaggio.style.display = "block";
     messaggio.innerHTML = `
         ====================<br>
         VICTORY<br>
